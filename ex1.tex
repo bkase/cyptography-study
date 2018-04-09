@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+\usepackage{enumerate}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\section*{Exercise 1.1}
+
+\textit{If $\mu(\cdot)$ and $v(\cdot)$ are negligible functions then show that $\mu(\cdot) \cdot v(\cdot)$ is a negligible function
+} \\
+
+Assumptions:
+\begin{align*}
+        &\mu(\cdot) negligible \\
+\iff &\forall c_1 \in \mathbb{Z}^{+}, \exists n_{0_1} \in \mathbb{Z}^{+} s.t. \forall n_1 \geq n_{0_1}, \mu(n_1) < n_1^{-c_1} \\
+\\
+&v(\cdot) negligible \\
+\iff &\forall c_2 \in \mathbb{Z}^{+}, \exists n_{0_2} \in \mathbb{Z}^{+} s.t. \forall n_2 \geq n_{0_2}, v(n_2) < n_2^{-c_2}
+\end{align*}
+
+Want to show $f(\cdot) = \mu(\cdot)\cdot v(\cdot) negligible$, aka:
+$$\forall c \in \mathbb{Z}^{+}, \exists n_0' \in \mathbb{Z}^{+} s.t. \forall n \geq n_0', f(n) < n^{-c}$$
+
+Consider these two functions multiplied together. Notice that inequalities are preserved when multiplied by positive numbers. Also that we can keep unify the $c_1$ and $c_2$ into $c$ (because that's what a similar proof in notes does).
+
+\begin{align*}
+\mu(\cdot) \cdot v(\cdot) = &\forall c \in \mathbb{Z}^{+}, \exists n_{0_1},n_{0_2} \in \mathbb{Z}^{+} s.t. \\
+  &\forall n_1 \geq n_{0_1}, n_2 \geq n_{0_2} \\
+  &\mu(n_1)\cdot v(n_2) < n_1^{-c}\cdot n_2^{-c} \\
+\end{align*}
+
+Let $n_0' = max(n_{0_1}, n_{0_2})$ \\
+Note that $n_0' \geq n_{0_1} \text{and}\ n_0' \geq n_{0_2}$. Therefore:
+
+\begin{align*}
+\forall n \geq n_0', \mu(n)\cdot v(n) &< n^{-c}\cdot n^{-c} = n^{-2c} < n^{-c}
+\end{align*}
+
+Since $f(n) = \mu(n)\cdot v(n)$, we've shown:
+
+$$\forall c \in \mathbb{Z}^{+}, \exists n_0' \in \mathbb{Z}^{+} s.t. \forall n \geq n_0', f(n) < n^{-c}$$
+
+Thus $f(\cdot) negligible$ \qed
+
+\section*{Exercise 1.2}
+
+\textit{If $\mu(\cdot)$ is a negligible function and $f(\cdot)$ is a function polynomial in its input then show that $\mu(f(\cdot))$ is a negligible function.
+} \\
+
+Assumptions:
+\begin{align*}
+        &\mu(\cdot) negligible \\
+\iff &\forall c \in \mathbb{Z}^{+}, \exists n_{0_1} \in \mathbb{Z}^{+} s.t. \forall n \geq n_{0_1}, \mu(n) < n^{-c} \\
+\\
+&f(\cdot) poly \\
+\iff &\forall d \in \mathbb{N}, \exists C,k \in \mathbb{N}\ s.t.\ \forall m > k, f(m) \leq Cm^{d}
+\end{align*}
+
+Want to show:
+\begin{align*}
+        &\mu(f(\cdot)) negligible \\
+\iff &\forall c \in \mathbb{Z}^{+}, \exists n_0 \in \mathbb{Z}^{+} s.t. \forall n \geq n_0, \mu(f(n)) < n^{-c} \\
+\iff &\forall d \in \mathbb{N}, \exists C,k \in \mathbb{N}\ s.t.\  \forall c \in \mathbb{Z}^{+}, \exists n_0 \in \mathbb{Z}^{+} s.t. \forall n \geq n_0, \mu(Cn^d) < n^{-c} \\
+\end{align*}
+
+Since we know $\mu(\cdot) negligible$, we know:
+$$
+\forall d \in \mathbb{N}, \exists C,k \in \mathbb{N}\ s.t.\  \forall c \in \mathbb{Z}^{+}, \exists n_{0_1} \in \mathbb{Z}^{+} s.t. \forall n \geq n_0, \mu(Cn^d) < (Cn^d)^{-c}
+$$
+
+So it suffices to choose a $n_0$ and show $(Cm^d)^{-c} \leq n^{-c}$, $\forall n \geq n_0$ and $\forall m \geq n_{0_1}$. \\
+
+If $(Cm^d)^{-c} \leq n^{-c}$ is true $\forall m,n \geq$ some lower bound  then it's true at the lower bound. \\
+
+Thus it suffices to choose a $n_0$ and show $(C{n_{0_1}}^d)^{-c} \leq {n_0}^{-c}$ \\
+Let $n_0 = (C{n_{0_1}}^d)^{-c}$ \\
+$(C{n_{0_1}}^d)^{-c} \leq (C{n_{0_1}}^d)^{-c}$ \\
+
+Thus:
+$$
+\forall d \in \mathbb{N}, \exists C,k \in \mathbb{N}\ s.t.\  \forall c \in \mathbb{Z}^{+}, \exists n_0 \in \mathbb{Z}^{+} s.t. \forall n \geq n_0, \mu(Cn^d) < (Cn^d)^{-c} \leq n^{-c}
+$$ \qed
+
+\section*{Exercise 1.3}
+
+\textit{Prove that the existence of one-way functions implies $P \neq NP$} \\
+
+Assume for the sake of contradiction $P = NP$
+
+
+\end{document}
+

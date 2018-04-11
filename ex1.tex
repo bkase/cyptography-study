@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{enumerate}
+\usepackage{mathrsfs}
 \usepackage{amsmath, amsfonts, amsthm, amssymb}
 \setlength{\parindent}{0pt}
 
@@ -86,7 +87,29 @@ $$ \qed
 
 \textit{Prove that the existence of one-way functions implies $P \neq NP$} \\
 
-Assume for the sake of contradiction $P = NP$
+Assume for the sake of contradiction $P = NP$ and assume that one-way functions exist. We will show that $P = NP$ actually implies that one-way functions don't exist. \\
+
+This means if something is easy (poly time) to verify it's easy to compute. \\
+
+The definition of a one-way function is that the probability that an adversary $\mathcal{A}$ can invert a function $f$ invoked on some input $x$ uniformly at random is negligible w.r.t the size of $x$. \\
+
+Verifying that some $y$ is a pre-image to a function $f$ that runs in poly time is now easy since $P = NP$. Easy means poly time. \\
+
+Recall that negligible means that some function grows slower than an inverse polynomial. \\
+
+An adversary $\mathcal{A}$ can now use the $P = NP$ oracle to find a preimage for $f$ deterministically in poly time. The probability that this will happen is 1. This is larger than an inverse polynomial. So one-way functions do not exist.
+
+Thus we have a contradiction.
+
+A bit hand-wavy, but you get the idea. \qed
+
+\section*{Exercise 1.4}
+
+\textit{Prove that there is no one-way function $f : \{0,1\}^n \rightarrow \{0,1\}^{\lfloor log_2n \rfloor}$} \\
+
+Recall that a one-way function states that the probability an adverary $\mathcal{A}$ can find the preimage to a function is for some uniformly random chosen $x$ is negligible.
+
+If the range of the function is only $\lfloor log_2n \rfloor$ many bits, then guessing randomly will be correct with probability $2^{-\lfloor log_2n \rfloor}$ basically probability $\frac{1}{n}$. This function is not negligible: When $c = 2$, $n^{-1} > n^{-2}$. \qed
 
 
 \end{document}
